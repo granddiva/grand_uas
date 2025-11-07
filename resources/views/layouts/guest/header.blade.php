@@ -32,6 +32,11 @@
                 class="hover:text-pink-200 transition duration-150">
                 <i class="fas fa-plus-circle mr-1"></i> Warga
             </a>
+            <a href="{{ route('about') }}" onclick="switchView('form'); return false;"
+                class="hover:text-pink-200 transition duration-150">
+                <i class="fas fa-info-circle mr-1"></i> Tentang Aplikasi
+            </a>
+
             <span class="opacity-75 hidden md:inline">|</span>
             <a href="{{ route('user.index') }}" class="hover:text-pink-200 transition duration-150 hidden md:inline">
                 <i class="fas fa-user mr-1"></i> User

@@ -17,3 +17,6 @@ Route::resource('warga', WargaController::class);
 Route::get('/login', [AuthController::class, 'index'])->name('login.index');
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/about', function () {
+    return view('guest/about.about');
+})->name('about');
