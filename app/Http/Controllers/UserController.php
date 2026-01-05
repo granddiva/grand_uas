@@ -51,13 +51,6 @@ class UserController extends Controller
 
         ]);
 
-        User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'password' => Hash::make($request->password),
-            'role'     => $request->role,
-        ]);
-
         return redirect()->route('user.index')
             ->with('success', 'User berhasil ditambahkan!');
     }
