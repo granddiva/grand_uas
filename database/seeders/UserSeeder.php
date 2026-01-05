@@ -20,12 +20,5 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password123'), // ganti sesuai kebutuhan
             'role'     => 'admin',
         ]);
-
-        // === JALANKAN SEEDER LAIN ===
-        $this->call([
-            WargaSeeder::class,
-            PosyanduSeeder::class,
-            KaderPosyanduSeeder::class,
-        ]);
     }
 }
