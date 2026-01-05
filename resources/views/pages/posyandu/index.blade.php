@@ -87,6 +87,11 @@
                     </div>
 
                     <div class="mt-4 flex justify-end gap-2">
+                          <a href="{{ route('posyandu.show', $item) }}"
+       class="px-3 py-1.5 bg-green-600 text-white rounded hover:bg-green-700">
+        Detail
+    </a>
+
                         <a href="{{ route('posyandu.edit', $item) }}" class="px-3 py-1.5 bg-blue-500 text-white rounded hover:bg-blue-600">Edit</a>
 
                         <form action="{{ route('posyandu.destroy', $item) }}" method="POST" onsubmit="return confirm('Yakin hapus?')">

@@ -1,9 +1,58 @@
 @extends('layouts.app')
+<style>
+
+.slideshow-container {
+position: relative;
+width: 100%;
+height: 480;
+overflow: hidden;
+border-radius: 20px;
+}
+
+.slideshow-image {
+position: absolute;
+width: 100%;
+height: 100%;
+object-fit: cover;
+animation: fadeSlide 15s infinite;
+opacity: 0;
+}
+
+.slideshow-image:nth-child(1) { animation-delay: 0s; }
+.slideshow-image:nth-child(2) { animation-delay: 5s; }
+.slideshow-image:nth-child(3) { animation-delay: 10s; }
+
+@keyframes fadeSlide {
+0% { opacity: 0; }
+10% { opacity: 1; }
+30% { opacity: 1; }
+40% { opacity: 0; }
+100% { opacity: 0; }
+}
+
+/* Overlay gelap */
+.slideshow-overlay {
+position: absolute;
+inset: 0;
+background: rgba(0, 0, 0, 0.45);
+z-index: 5;
+border-radius: 20px;
+}
+</style>
 
 @section('content')
-    <header class="appvilla-hero rounded-2xl mb-8 p-10 md:p-12">
-        <div class="hero-bg-overlay"></div>
-        <div class="text-center relative z-10 text-white">
+    <header class="relative rounded-2xl mb-8">
+
+        {{-- Slideshow --}}
+        <div class="slideshow-container">
+            <img src="{{ asset('assets/images/slideshow/posyandu1.jpg') }}" class="slideshow-image">
+            <img src="{{ asset('assets/images/slideshow/posyandu2.jpg') }}" class="slideshow-image">
+            <img src="{{ asset('assets/images/slideshow/sposyandu3.jpg') }}" class="slideshow-image">
+            <div class="slideshow-overlay"></div>
+        </div>
+
+        {{-- Teks Hero --}}
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10 p-10 md:p-12">
             <i class="fas fa-heartbeat text-4xl mb-2 d-inline-block animate-pulse-slow"></i>
             <h1 class="text-3xl md:text-5xl font-extrabold mb-2 text-shadow-hero">
                 POSYANDU DIGITAL
@@ -16,6 +65,7 @@
                 <i class="fas fa-plus-circle mr-2"></i> Tambah Data Pengukuran Baru
             </a>
         </div>
+
     </header>
 
     <div id="dashboard-view">

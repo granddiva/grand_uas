@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 // LOGIN
 Route::match(['GET', 'POST'], '/', [AuthController::class, 'index'])->name('login.form');
+Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.process');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::view('/about', 'pages.about.about')->name('about');
@@ -36,4 +37,7 @@ Route::middleware(['checkislogin'])->group(function () {
 
     Route::resource('warga', WargaController::class)
         ->middleware('checkrole:admin,kader');
+
+
+
 });

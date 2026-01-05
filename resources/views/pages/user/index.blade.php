@@ -62,6 +62,7 @@
                             <thead class="bg-pink-500 text-white">
                                 <tr>
                                     <th class="py-3 px-4 text-left font-bold">No</th>
+                                    <th class="py-3 px-4 text-left font-bold">Foto</th>
                                     <th class="py-3 px-4 text-left font-bold">Nama</th>
                                     <th class="py-3 px-4 text-left font-bold">Email</th>
                                     <th class="py-3 px-4 text-left font-bold">Role</th>
@@ -73,6 +74,12 @@
                                 @forelse ($users as $i => $user)
                                     <tr class="border-b border-gray-200 hover:bg-pink-50">
                                         <td class="py-3 px-4">{{ $users->firstItem() + $i }}</td>
+                                        <!-- FOTO PROFIL -->
+                                        <td class="py-3 px-4">
+                                            <img src="{{ $user->foto ? asset($user->foto) : asset('assets/images/logop.png') }}"
+                                                class="w-12 h-12 rounded-full object-cover border shadow">
+                                        </td>
+
                                         <td class="py-3 px-4 font-semibold text-gray-800">{{ $user->name }}</td>
                                         <td class="py-3 px-4 text-gray-600">{{ $user->email }}</td>
                                         <td class="py-3 px-4">

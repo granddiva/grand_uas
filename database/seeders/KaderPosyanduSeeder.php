@@ -14,6 +14,9 @@ class KaderPosyanduSeeder extends Seeder
 
         $peranList = ['Ketua', 'Bendahara', 'Sekretaris', 'Anggota'];
 
+        $wargaIDs = DB::table('wargas')->pluck('warga_id')->toArray();
+        $posyanduIDs = DB::table('posyandu')->pluck('posyandu_id')->toArray();
+
         $data = [];
 
         for ($i = 1; $i <= 100; $i++) {
@@ -25,12 +28,13 @@ class KaderPosyanduSeeder extends Seeder
                 : null;
 
             $data[] = [
-                'kader_id'    => rand(1, 50),
-                'posyandu_id' => rand(1, 20),
-                'warga_id'    => rand(1, 200),
-                'peran'       => $faker->randomElement($peranList),
+                'posyandu_id' => $faker->randomElement($posyanduIDs),
+                'warga_id' => $faker->randomElement($wargaIDs),
+                'peran' => $faker->randomElement($peranList),
                 'mulai_tugas' => $mulai,
                 'akhir_tugas' => $akhir,
+                'created_at' => now(),
+                'updated_at' => now(),
             ];
         }
 

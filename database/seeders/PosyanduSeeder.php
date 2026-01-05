@@ -12,20 +12,16 @@ class PosyanduSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        $data = [];
         for ($i = 1; $i <= 100; $i++) {
-            $data[] = [
-                'nama' => 'Posyandu ' . $faker->city(),
-                'alamat' => $faker->address(),
-                'rt' => str_pad((string)rand(1,20), 2, '0', STR_PAD_LEFT),
-                'rw' => str_pad((string)rand(1,20), 2, '0', STR_PAD_LEFT),
-                'kontak' => $faker->phoneNumber(),
-                'media' => null,
+            DB::table('posyandu')->insert([
+                'nama' => 'Posyandu ' . substr($faker->city(), 0, 50),
+                'alamat' => substr($faker->address(), 0, 255),
+                'rt' => str_pad((string)rand(1, 20), 2, '0', STR_PAD_LEFT),
+                'rw' => str_pad((string)rand(1, 20), 2, '0', STR_PAD_LEFT),
+                'kontak' => '08' . rand(1111111111, 9999999999), // AMAN
                 'created_at' => now(),
                 'updated_at' => now(),
-            ];
+            ]);
         }
-
-        DB::table('posyandu')->insert($data);
     }
 }
